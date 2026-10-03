@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061225">
+    <title>CyberShield | Security Awareness Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="../frontend/index.html">
+            <span class="brand-icon">⬡</span>
+            <span>Cyber<span>Shield</span><small>SECURITY AWARENESS</small></span>
+        </a>
+        <a class="back-link" href="../frontend/index.html">← Dashboard</a>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="eyebrow"><span class="live-dot"></span> SECURITY LEARNING CENTER</div>
+            <h1>Test your <span>cyber awareness.</span></h1>
+            <p>Challenge your knowledge of phishing, passwords, cloud security and incident response.</p>
+            <div class="hero-tags">
+                <span>30 Questions</span>
+                <span>Multiple Choice</span>
+                <span>Instant Feedback</span>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span class="stat-icon">◎</span>
+                <div><small>QUESTIONS</small><strong id="totalQuestions">30</strong></div>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon green">✓</span>
+                <div><small>ANSWERED</small><strong id="answeredCount">0</strong></div>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon purple">★</span>
+                <div><small>CURRENT SCORE</small><strong id="currentScore">0%</strong></div>
+            </article>
+        </section>
+
+        <section class="quiz-layout" id="quizArea">
+            <article class="quiz-card">
+                <div class="quiz-topline">
+                    <span id="questionCounter">QUESTION 01 / 30</span>
+                    <span class="category-pill" id="categoryPill">Password Security</span>
+                </div>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <h2 id="questionText">Loading quiz questions…</h2>
+
+                <div class="options" id="optionsContainer"></div>
+
+                <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+
+                <div class="quiz-actions">
+                    <button class="secondary-button" id="previousBtn" type="button">← Previous</button>
+                    <button class="primary-button" id="nextBtn" type="button" disabled>Next Question →</button>
+                </div>
+            </article>
+
+            <aside class="side-card">
+                <div class="side-heading">
+                    <span>◈</span>
+                    <h3>Quiz Progress</h3>
+                </div>
+                <div class="progress-summary">
+                    <strong id="progressPercent">0%</strong>
+                    <span>completed</span>
+                </div>
+                <div class="question-grid" id="questionGrid"></div>
+                <div class="legend">
+                    <span><i class="legend-dot answered-dot"></i> Answered</span>
+                    <span><i class="legend-dot current-dot"></i> Current</span>
+                </div>
+                <div class="safety-note">
+                    <strong>🛡 Learn safely</strong>
+                    <p>This quiz is educational. It does not scan systems, contact suspicious indicators or execute threats.</p>
+                </div>
+            </aside>
+        </section>
+
+        <section class="result-card" id="resultArea" hidden>
+            <div class="result-icon" id="resultIcon">✓</div>
+            <p class="eyebrow">QUIZ COMPLETED</p>
+            <h2 id="resultHeading">Your awareness result</h2>
+            <p class="result-description" id="resultDescription"></p>
+
+            <div class="result-score">
+                <strong id="finalPercentage">0%</strong>
+                <span>Awareness Score</span>
+            </div>
+
+            <div class="result-stats">
+                <div><strong id="correctAnswers">0</strong><span>Correct</span></div>
+                <div><strong id="wrongAnswers">0</strong><span>Incorrect</span></div>
+                <div><strong id="finalTotal">30</strong><span>Total</span></div>
+            </div>
+
+            <div class="result-actions">
+                <button class="primary-button" id="retryBtn" type="button">↻ Retake Quiz</button>
+                <a class="secondary-button" href="../frontend/index.html">Return to Dashboard</a>
+            </div>
+            <p class="disclaimer">This is a learning score, not a professional security certification.</p>
+        </section>
+
+        <footer>CyberShield Student Project · Defensive Security Education · Synthetic Training</footer>
+    </main>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

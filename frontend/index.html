@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061225">
+    <title>CyberShield | SOC Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <a href="#overview" class="brand">
+            <span class="brand-mark">⬡</span>
+            <span>
+                <strong>Cyber<span>Shield</span></strong>
+                <small>THREAT INTELLIGENCE</small>
+            </span>
+        </a>
+
+        <div class="side-label">WORKSPACE</div>
+        <nav class="navigation">
+            <a class="nav-link active" href="#overview"><span>⌂</span> Overview</a>
+            <a class="nav-link" href="#records"><span>▤</span> Threat Records</a>
+            <a class="nav-link" href="#alerts"><span>♧</span> Security Alerts <b class="nav-count" id="alertCount">—</b></a>
+            <a class="nav-link" href="#awareness"><span>◇</span> Awareness Center</a>
+            <a class="nav-link" href="#analytics"><span>▥</span> Reports & Analytics</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="connection-heading"><span class="live-dot"></span> API Connection</div>
+            <p id="connectionStatus">Checking connection...</p>
+            <small>http://127.0.0.1:8000</small>
+        </div>
+
+        <div class="demo-note">
+            <strong>ⓘ Synthetic Demo Data</strong>
+            <p>Training dataset only. Alerts are not verified real-world threats.</p>
+        </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+        <header class="topbar">
+            <div class="page-title">
+                <div class="shield-icon">⬡</div>
+                <div>
+                    <h1>Threat Intelligence Dashboard</h1>
+                    <p>Security Operations Center <span class="separator">/</span> Overview</p>
+                </div>
+            </div>
+
+            <div class="top-controls">
+                <select id="severityFilter" aria-label="Filter severity">
+                    <option value="">All Severity</option>
+                    <option value="Critical">Critical</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <button id="refreshBtn" class="icon-button" title="Refresh dashboard">↻</button>
+                <span class="synthetic-pill"><span class="live-dot"></span> SYNTHETIC DATA</span>
+            </div>
+        </header>
+
+        <section class="metric-grid">
+            <article class="metric-card cyan">
+                <div class="metric-icon">⬡</div>
+                <div class="metric-content">
+                    <p>Total Threats</p>
+                    <h2 id="totalRecords">—</h2>
+                    <small>All sample records</small>
+                </div>
+            </article>
+
+            <article class="metric-card red">
+                <div class="metric-icon">⚠</div>
+                <div class="metric-content">
+                    <p>High-Risk Alerts</p>
+                    <h2 id="highRisk">—</h2>
+                    <small>Risk score ≥ 75</small>
+                </div>
+            </article>
+
+            <article class="metric-card blue">
+                <div class="metric-icon">◉</div>
+                <div class="metric-content">
+                    <p>Average Risk</p>
+                    <h2 id="averageRisk">—</h2>
+                    <small>Score out of 100</small>
+                </div>
+            </article>
+
+            <article class="metric-card teal">
+                <div class="metric-icon">▦</div>
+                <div class="metric-content">
+                    <p>Threat Categories</p>
+                    <h2 id="categoryCount">—</h2>
+                    <small>Distinct categories</small>
+                </div>
+            </article>
+
+            <article class="metric-card purple">
+                <div class="metric-icon">◎</div>
+                <div class="metric-content">
+                    <p>Open Investigations</p>
+                    <h2 id="openInvestigations">—</h2>
+                    <small>New or investigating</small>
+                </div>
+            </article>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="panel severity-panel">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">▥</span><h3>Threat Distribution by Severity</h3></div>
+                    <span class="tiny-tag">OVERVIEW</span>
+                </div>
+                <div class="chart-box radar-box">
+                    <canvas id="severityChart"></canvas>
+                </div>
+                <div class="legend-row">
+                    <span><i class="dot red-bg"></i>Critical</span>
+                    <span><i class="dot orange-bg"></i>High</span>
+                    <span><i class="dot yellow-bg"></i>Medium</span>
+                    <span><i class="dot teal-bg"></i>Low</span>
+                </div>
+            </article>
+
+            <article class="panel map-panel">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">◎</span><h3>Global Threat Overview</h3></div>
+                    <span class="tiny-tag">ILLUSTRATIVE</span>
+                </div>
+
+                <div class="world-map">
+                    <svg viewBox="0 0 650 340" role="img"
+                         aria-label="Illustrative world map with synthetic activity markers">
+                        <defs>
+                            <pattern id="mapGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+                                <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#123052" stroke-width=".7"/>
+                            </pattern>
+                            <linearGradient id="landColor" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#24569a"/>
+                                <stop offset="100%" stop-color="#112b52"/>
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <rect width="650" height="340" fill="url(#mapGrid)"/>
+                        <g fill="url(#landColor)" stroke="#3569a7" stroke-width="1.2">
+                            <path d="M52 74 L78 43 119 32 150 48 179 42 202 60 194 83 164 95 150 117 123 126 111 153 89 145 76 120 57 109Z"/>
+                            <path d="M156 155 L183 166 199 194 191 220 180 246 168 280 154 264 148 231 134 205 140 177Z"/>
+                            <path d="M271 62 L300 48 321 58 342 50 366 60 389 48 420 55 448 66 482 63 513 77 548 82 568 102 543 116 519 108 503 130 481 132 469 154 450 147 439 126 417 122 398 110 378 122 357 111 338 96 314 101 294 89 278 91 258 78Z"/>
+                            <path d="M316 123 L344 128 364 154 365 184 347 209 337 235 319 257 303 233 306 205 292 181 299 155Z"/>
+                            <path d="M500 211 L527 199 552 212 562 232 544 245 518 237Z"/>
+                            <path d="M572 270 L589 263 600 275 587 286 572 282Z"/>
+                        </g>
+                        <g fill="none" stroke-width="2" opacity=".9">
+                            <path d="M113 113 Q250 5 363 93" stroke="#00d5ff"/>
+                            <path d="M363 93 Q425 160 501 127" stroke="#13e3bd"/>
+                            <path d="M180 206 Q318 130 501 127" stroke="#ffb53d"/>
+                            <path d="M363 93 Q332 192 335 229" stroke="#6b91ff"/>
+                        </g>
+                        <g filter="url(#glow)">
+                            <circle cx="113" cy="113" r="5" fill="#ff526c"/>
+                            <circle cx="363" cy="93" r="5" fill="#00d5ff"/>
+                            <circle cx="501" cy="127" r="5" fill="#ff526c"/>
+                            <circle cx="335" cy="229" r="5" fill="#13e3bd"/>
+                            <circle cx="180" cy="206" r="5" fill="#ffb53d"/>
+                        </g>
+                        <g fill="#bfeaff" font-size="12" font-family="Segoe UI, sans-serif">
+                            <text x="35" y="98">N. America</text>
+                            <text x="373" y="78">Europe</text>
+                            <text x="510" y="118">Asia</text>
+                            <text x="342" y="250">Africa</text>
+                            <text x="151" y="226">S. America</text>
+                        </g>
+                    </svg>
+                </div>
+                <div class="map-caption">
+                    <span><i class="dot red-bg"></i>Critical</span>
+                    <span><i class="dot orange-bg"></i>High</span>
+                    <span><i class="dot yellow-bg"></i>Medium</span>
+                    <span><i class="dot teal-bg"></i>Low</span>
+                </div>
+                <p class="map-disclaimer">Illustrative map only — markers and routes are not geolocated threat data.</p>
+            </article>
+
+            <article class="panel trend-panel" id="analytics">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">⌁</span><h3>Threat Trends Over Time</h3></div>
+                    <span class="tiny-tag">SAMPLE</span>
+                </div>
+                <div class="chart-box trend-chart-box"><canvas id="trendChart"></canvas></div>
+                <p class="chart-footnote">Illustrative trend generated from sample counts, not historical telemetry.</p>
+            </article>
+
+            <article class="panel category-panel">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">▥</span><h3>Breakdown of Threats by Type</h3></div>
+                    <span class="tiny-tag">API DATA</span>
+                </div>
+                <div class="chart-box category-chart-box"><canvas id="categoryChart"></canvas></div>
+            </article>
+
+            <article class="panel confidence-panel">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">◉</span><h3>Detection Confidence</h3></div>
+                    <span class="tiny-tag">SAMPLE</span>
+                </div>
+                <div class="confidence-layout">
+                    <div class="confidence-ring" id="confidenceRing">
+                        <div><strong id="confidenceValue">—</strong><span>Avg. Confidence</span></div>
+                    </div>
+                    <div class="confidence-legend">
+                        <p><i class="dot teal-bg"></i>High <strong id="confidenceHigh">—</strong></p>
+                        <p><i class="dot blue-bg"></i>Medium <strong id="confidenceMedium">—</strong></p>
+                        <p><i class="dot purple-bg"></i>Low <strong id="confidenceLow">—</strong></p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel recent-panel" id="alerts">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">♧</span><h3>Recent Security Alerts</h3></div>
+                    <span class="tiny-tag">TOP 5</span>
+                </div>
+                <div class="table-wrap">
+                    <table class="recent-table">
+                        <thead><tr><th>ID</th><th>Severity</th><th>Type</th><th>Risk</th></tr></thead>
+                        <tbody id="recentAlertsBody">
+                            <tr><td colspan="4">Loading alerts...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="panel systems-panel">
+                <div class="panel-heading">
+                    <div><span class="heading-icon">▤</span><h3>Affected Systems & Severity</h3></div>
+                    <span class="tiny-tag">RECORD COUNTS</span>
+                </div>
+                <div class="severity-rings">
+                    <div class="ring-item">
+                        <div class="severity-ring ring-critical" id="ringCritical"><div><strong id="countCritical">—</strong><small>Critical</small></div></div>
+                        <small id="percentCritical">—</small>
+                    </div>
+                    <div class="ring-item">
+                        <div class="severity-ring ring-high" id="ringHigh"><div><strong id="countHigh">—</strong><small>High</small></div></div>
+                        <small id="percentHigh">—</small>
+                    </div>
+                    <div class="ring-item">
+                        <div class="severity-ring ring-medium" id="ringMedium"><div><strong id="countMedium">—</strong><small>Medium</small></div></div>
+                        <small id="percentMedium">—</small>
+                    </div>
+                    <div class="ring-item">
+                        <div class="severity-ring ring-low" id="ringLow"><div><strong id="countLow">—</strong><small>Low</small></div></div>
+                        <small id="percentLow">—</small>
+                    </div>
+                </div>
+                <p class="chart-footnote">Severity counts refer to synthetic records, not confirmed affected systems.</p>
+            </article>
+        </section>
+
+        <section class="panel records-panel" id="records">
+            <div class="panel-heading records-title-row">
+                <div>
+                    <span class="heading-icon">☷</span>
+                    <h3>Threat Records</h3>
+                    <p>Search and filter the synthetic training dataset</p>
+                </div>
+                <span class="tiny-tag" id="recordCount">LOADING</span>
+            </div>
+
+            <form id="searchForm" class="table-controls">
+                <input id="searchInput" type="search" maxlength="100"
+                       placeholder="⌕  Search indicator, type, severity, MITRE...">
+                <button type="submit" class="primary-button">Search</button>
+                <button type="button" id="clearBtn" class="secondary-button">Clear</button>
+                <label class="limit-control">Show
+                    <select id="limitSelect">
+                        <option value="25">25</option>
+                        <option value="50" selected>50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </form>
+
+            <div class="table-wrap main-table-wrap">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>Timestamp</th><th>Threat Type</th>
+                            <th>Indicator</th><th>Severity</th><th>Risk Score</th>
+                            <th>Status</th><th>Source</th><th>MITRE Tactic</th><th>Technique</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsBody">
+                        <tr><td colspan="10">Connecting to API...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="tableMessage">Waiting for API data...</span>
+                <button id="loadMoreBtn" class="secondary-button">Load more</button>
+            </div>
+        </section>
+
+        <section class="panel awareness-panel" id="awareness">
+            <div class="panel-heading">
+                <div><span class="heading-icon">◇</span><h3>Security Awareness Center</h3></div>
+                <span class="tiny-tag">LEARN</span>
+            </div>
+            <div class="awareness-grid">
+                <article><span class="awareness-number">01</span><div><h4>Recognize phishing</h4><p>Verify the sender, inspect links carefully, and report unexpected requests for credentials.</p></div></article>
+                <article><span class="awareness-number">02</span><div><h4>Secure your accounts</h4><p>Use unique passwords, a password manager, and multi-factor authentication.</p></div></article>
+                <article><span class="awareness-number">03</span><div><h4>Respond safely</h4><p>Follow your organization's incident-reporting process. Do not investigate suspicious links by opening them.</p></div></article>
+            </div>
+        </section>
+
+        <footer>CyberShield Student Project · Defensive Security Education · Synthetic Data Only</footer>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

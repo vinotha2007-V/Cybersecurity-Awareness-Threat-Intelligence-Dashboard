@@ -1,0 +1,243 @@
+
+[
+  {
+    "id": 1,
+    "category": "Password Security",
+    "question": "Which is the safest password practice?",
+    "options": ["Use your name and birth year", "Reuse one password everywhere", "Use a long, unique password for each account", "Share passwords with friends"],
+    "answer": 2,
+    "explanation": "Long, unique passwords reduce the risk that one compromised account exposes your other accounts."
+  },
+  {
+    "id": 2,
+    "category": "Password Security",
+    "question": "What does multi-factor authentication (MFA) add?",
+    "options": ["A second verification factor", "A shorter password", "Public access to your account", "Automatic password sharing"],
+    "answer": 0,
+    "explanation": "MFA asks for an additional proof of identity, such as an authenticator code or security key."
+  },
+  {
+    "id": 3,
+    "category": "Phishing",
+    "question": "You receive an unexpected email asking you to verify your password through a link. What should you do?",
+    "options": ["Click immediately", "Reply with your password", "Forward it to everyone", "Avoid the link and verify through the official website or IT team"],
+    "answer": 3,
+    "explanation": "Unexpected credential requests can be phishing. Verify using a trusted channel."
+  },
+  {
+    "id": 4,
+    "category": "Phishing",
+    "question": "Which can be a sign of a phishing message?",
+    "options": ["A message you expected from a known colleague", "Urgent pressure to click a suspicious link", "A saved offline document", "A correctly locked screen"],
+    "answer": 1,
+    "explanation": "Urgency, unusual requests, suspicious links, and unexpected attachments can be warning signs."
+  },
+  {
+    "id": 5,
+    "category": "Email Security",
+    "question": "What should you do with an unexpected attachment from an unknown sender?",
+    "options": ["Open it to find out what it is", "Enable macros if asked", "Do not open it; report or verify it", "Upload it to a public website"],
+    "answer": 2,
+    "explanation": "Unexpected attachments can contain malicious content. Verify and report them."
+  },
+  {
+    "id": 6,
+    "category": "Device Security",
+    "question": "Why should operating systems and applications be updated?",
+    "options": ["Updates can fix known security vulnerabilities", "Updates always remove passwords", "Updates make every file public", "Updates disable all security controls"],
+    "answer": 0,
+    "explanation": "Security updates often fix vulnerabilities that attackers could otherwise exploit."
+  },
+  {
+    "id": 7,
+    "category": "Network Security",
+    "question": "When using public Wi-Fi, which practice is safer?",
+    "options": ["Disable every security feature", "Share files with everyone", "Use any pop-up login page", "Use trusted encrypted services and avoid sensitive activity on untrusted networks"],
+    "answer": 3,
+    "explanation": "Use HTTPS, trusted services, and an approved VPN where appropriate. Do not ignore certificate warnings."
+  },
+  {
+    "id": 8,
+    "category": "Data Protection",
+    "question": "What is the principle of least privilege?",
+    "options": ["Give everyone administrator access", "Grant only the access needed for a task", "Never review access rights", "Share one account with a team"],
+    "answer": 1,
+    "explanation": "Least privilege limits the damage caused by accidental or unauthorized access."
+  },
+  {
+    "id": 9,
+    "category": "Data Protection",
+    "question": "Where should confidential company files be stored?",
+    "options": ["A public file-sharing link", "A personal public social profile", "An approved, access-controlled storage location", "Any unknown file-sharing website"],
+    "answer": 2,
+    "explanation": "Use organization-approved storage with suitable access controls and protection."
+  },
+  {
+    "id": 10,
+    "category": "Backups",
+    "question": "Why are backups important for ransomware recovery?",
+    "options": ["They can help restore data from a clean backup", "They prevent every possible attack", "They make passwords unnecessary", "They automatically identify every attacker"],
+    "answer": 0,
+    "explanation": "Protected, tested backups can help recover data after an incident."
+  },
+  {
+    "id": 11,
+    "category": "Incident Response",
+    "question": "You suspect your work account has been compromised. What should you do first?",
+    "options": ["Delete all evidence", "Ignore it until tomorrow", "Post the details publicly", "Report it promptly using your organization's incident process"],
+    "answer": 3,
+    "explanation": "Prompt reporting helps the security team investigate and contain a possible compromise."
+  },
+  {
+    "id": 12,
+    "category": "Social Engineering",
+    "question": "Someone calls claiming to be IT support and asks for your one-time password. What should you do?",
+    "options": ["Read it aloud", "Do not share it; verify the request through an official channel", "Send it by email", "Share it if they sound confident"],
+    "answer": 1,
+    "explanation": "Legitimate support should not need you to disclose your one-time authentication code."
+  },
+  {
+    "id": 13,
+    "category": "Physical Security",
+    "question": "What should you do before leaving your workstation unattended?",
+    "options": ["Leave sensitive documents visible", "Give your unlocked device to a visitor", "Lock your screen", "Write your password on the desk"],
+    "answer": 2,
+    "explanation": "Locking the screen helps prevent unauthorized access while you are away."
+  },
+  {
+    "id": 14,
+    "category": "Browser Security",
+    "question": "A website shows an unexpected certificate warning. What is the safer action?",
+    "options": ["Stop and verify the website rather than bypassing the warning", "Enter your bank password anyway", "Disable browser security", "Download every suggested file"],
+    "answer": 0,
+    "explanation": "Certificate warnings can indicate a connection or identity problem and should not be ignored."
+  },
+  {
+    "id": 15,
+    "category": "Mobile Security",
+    "question": "Which is a safer way to install a mobile application?",
+    "options": ["Install an unknown file sent by a stranger", "Disable device protection first", "Install any application that promises prizes", "Use the official app store and check the publisher"],
+    "answer": 3,
+    "explanation": "Official stores and publisher checks reduce, but do not eliminate, application risk."
+  },
+  {
+    "id": 16,
+    "category": "Privacy",
+    "question": "What is data minimization?",
+    "options": ["Collect every detail possible", "Collect only the data necessary for a defined purpose", "Publish user records", "Keep all data forever"],
+    "answer": 1,
+    "explanation": "Collecting less personal data reduces unnecessary exposure and privacy risk."
+  },
+  {
+    "id": 17,
+    "category": "Cloud Security",
+    "question": "What is a risk of making a cloud storage bucket public?",
+    "options": ["It always improves privacy", "It guarantees encryption", "Sensitive files may be exposed to unauthorized people", "It prevents all data loss"],
+    "answer": 2,
+    "explanation": "Public access can expose files. Review permissions and make access private unless public access is required."
+  },
+  {
+    "id": 18,
+    "category": "Cloud Security",
+    "question": "How should cloud access keys be handled?",
+    "options": ["Keep them out of public repositories and use a secure secret manager", "Commit them to GitHub", "Share them in a public chat", "Embed them in screenshots"],
+    "answer": 0,
+    "explanation": "Secrets should be stored securely, restricted, and rotated if exposed."
+  },
+  {
+    "id": 19,
+    "category": "Threat Intelligence",
+    "question": "What is an Indicator of Compromise (IOC)?",
+    "options": ["A guarantee that a computer is safe", "A user's job title", "A software license", "An observable clue that may indicate malicious activity"],
+    "answer": 3,
+    "explanation": "An IOC may include a suspicious domain, file hash, or IP address, but context is important."
+  },
+  {
+    "id": 20,
+    "category": "Threat Intelligence",
+    "question": "Does a threat-intelligence feed guarantee that every listed indicator is malicious right now?",
+    "options": ["Yes, forever", "No; indicators need context and validation", "Yes, without exception", "Only if the list is long"],
+    "answer": 1,
+    "explanation": "Indicators can become stale, be misclassified, or have legitimate uses. Validate before acting."
+  },
+  {
+    "id": 21,
+    "category": "Vulnerability Awareness",
+    "question": "What does a CVE identifier refer to?",
+    "options": ["A password type", "A backup schedule", "A publicly identified cybersecurity vulnerability or exposure record", "A Wi-Fi network name"],
+    "answer": 2,
+    "explanation": "CVE identifiers help people refer consistently to publicly disclosed vulnerabilities."
+  },
+  {
+    "id": 22,
+    "category": "Vulnerability Awareness",
+    "question": "What does a CVSS score help communicate?",
+    "options": ["Vulnerability severity characteristics", "The identity of an attacker with certainty", "The user's password", "A guarantee that exploitation occurred"],
+    "answer": 0,
+    "explanation": "CVSS helps describe vulnerability severity; it does not prove that a system was attacked."
+  },
+  {
+    "id": 23,
+    "category": "Security Monitoring",
+    "question": "Why are security logs useful?",
+    "options": ["They remove the need for security controls", "They always identify an attacker by name", "They should be shared publicly", "They support investigation and understanding of system activity"],
+    "answer": 3,
+    "explanation": "Logs provide evidence that can help analysts investigate events and timelines."
+  },
+  {
+    "id": 24,
+    "category": "Security Monitoring",
+    "question": "What should an analyst do when an alert may be a false positive?",
+    "options": ["Delete all related logs", "Investigate context and validate the alert", "Assume every alert is malicious", "Disable monitoring permanently"],
+    "answer": 1,
+    "explanation": "Analysts should verify alerts using relevant evidence and document their conclusions."
+  },
+  {
+    "id": 25,
+    "category": "Access Control",
+    "question": "What is a safer approach when an employee leaves an organization?",
+    "options": ["Keep every account active forever", "Share the employee's password", "Revoke unneeded access promptly according to policy", "Make all files public"],
+    "answer": 2,
+    "explanation": "Timely access removal helps prevent former users from accessing systems without authorization."
+  },
+  {
+    "id": 26,
+    "category": "Ransomware Awareness",
+    "question": "You see a ransomware note on a work computer. What should you do?",
+    "options": ["Follow the incident-response process and contact security immediately", "Pay immediately without authorization", "Connect every backup drive", "Delete the logs and continue working"],
+    "answer": 0,
+    "explanation": "Follow organizational incident procedures. Avoid actions that could worsen the incident or destroy evidence."
+  },
+  {
+    "id": 27,
+    "category": "Secure Development",
+    "question": "Where should an application validate untrusted user input?",
+    "options": ["Only in a decorative page title", "Nowhere if the UI looks correct", "Only after a data breach", "On the server, with suitable validation and safe database queries"],
+    "answer": 3,
+    "explanation": "Server-side validation and parameterized queries help protect application data and behavior."
+  },
+  {
+    "id": 28,
+    "category": "Secure Development",
+    "question": "Why should software dependencies be reviewed and updated?",
+    "options": ["To guarantee zero bugs", "To address known vulnerabilities and maintenance issues", "To publish secrets", "To disable all tests"],
+    "answer": 1,
+    "explanation": "Dependency maintenance can reduce known risks; updates should still be tested."
+  },
+  {
+    "id": 29,
+    "category": "Awareness",
+    "question": "What is the best way to report a suspicious email at work?",
+    "options": ["Post it on social media", "Send it to every contact", "Use the approved report-phishing button or security reporting channel", "Click all links to gather evidence"],
+    "answer": 2,
+    "explanation": "Use your organization's reporting process and avoid interacting with suspicious content."
+  },
+  {
+    "id": 30,
+    "category": "Incident Response",
+    "question": "Why should incident evidence be preserved?",
+    "options": ["It can support investigation and response", "It guarantees no future incidents", "It makes reporting unnecessary", "It should always be published online"],
+    "answer": 0,
+    "explanation": "Preserved evidence can help establish what happened and support incident investigation."
+  }
+]
